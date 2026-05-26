@@ -1,3 +1,4 @@
+// Componente raíz de la aplicación — orquesta el estado global y renderiza los paneles principales
 import { useState, useRef, useCallback, useEffect } from 'react';
 
 import useTilt from './hooks/useTilt';
@@ -8,16 +9,19 @@ import { generateAll } from './utils/generators';
 import { downloadCard, downloadStory } from './utils/export';
 import './App.css';
 
+// SVGs importados como texto crudo para manipularlos antes de inyectarlos al DOM
 import logoRaw from './assets/credencial/logo-ihm.svg?raw';
 import siluetaRaw from './assets/credencial/mango-pattern-silueta.svg?raw';
 
-// Strip the low-opacity group so shapes are fully opaque when used as a CSS mask
+// Se quita el grupo con baja opacidad para que las formas sean completamente opacas al usarse como máscara CSS
 const siluetaMaskSvg = siluetaRaw.replace(/opacity="0\.18"/, 'opacity="1"');
 const SILUETA_MASK_URL = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(siluetaMaskSvg)}`;
 
+// Dimensiones reales de la credencial en píxeles (sin escalar)
 const CARD_W = 900;
 const CARD_H = 560;
 
+// Avatar predeterminado que se muestra al cargar la app por primera vez
 const DEFAULT_AVATAR = {
   head: 'classic',
   expression: 'asombro',
@@ -25,6 +29,7 @@ const DEFAULT_AVATAR = {
   accessories: { audifonos: false, lentes: false },
 };
 
+// Genera el estado inicial con datos aleatorios para que la credencial no aparezca vacía
 function buildInitialState() {
   const gen = generateAll('MANGO', 'HABITANTE', 'H');
   return {
@@ -38,22 +43,27 @@ function buildInitialState() {
 }
 
 export default function App() {
+  // Estado principal del formulario y la credencial
   const [state, setState] = useState(buildInitialState);
+  // 'card' | 'story' | null — indica qué exportación está en curso para deshabilitar botones
   const [exporting, setExporting] = useState(null);
+  // Escala dinámica de la tarjeta según el ancho disponible del contenedor
   const [cardScale, setCardScale] = useState(0.68);
 
   const { wrapRef, glareRef, onMove, onLeave, gyroState, startGyro } = useTilt();
 
+  // Referencias al DOM: cardRef es la vista, cardExportRef y storyRef son los elementos ocultos para exportar
   const cardRef = useRef(null);
   const cardExportRef = useRef(null);
   const storyRef = useRef(null);
   const previewRef = useRef(null);
 
-  // Dynamic card scale based on available container width
+  // Ajusta la escala de la tarjeta cada vez que cambia el ancho del panel de vista previa
   useEffect(() => {
     const el = previewRef.current;
     if (!el) return;
     const observer = new ResizeObserver(([entry]) => {
+      // Se resta 32px de padding y se limita a 82% del ancho para evitar que ocupe todo el espacio
       const available = entry.contentRect.width - 32;
       setCardScale(Math.min(available / CARD_W, 0.82));
     });
@@ -61,25 +71,30 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Regenera CURP, folio, sección y nivel de jugo con el nombre/apellido actuales
   const handleGenerate = useCallback(() => {
     const gen = generateAll(state.nombre, state.apellido);
     setState(s => ({ ...s, ...gen }));
   }, [state.nombre, state.apellido]);
 
+  // Reemplaza el estado completo con el objeto enviado desde IdForm
   const handleChange = useCallback((next) => setState(next), []);
 
+  // Captura la credencial oculta a tamaño completo y la descarga como PNG
   const handleDownloadCard = async () => {
     setExporting('card');
     try { await downloadCard(cardExportRef, state.nombre || 'habitante'); }
     finally { setExporting(null); }
   };
 
+  // Captura el marco de story oculto y lo descarga como PNG 1080×1920
   const handleDownloadStory = async () => {
     setExporting('story');
     try { await downloadStory(storyRef, state.nombre || 'habitante'); }
     finally { setExporting(null); }
   };
 
+  // Datos normalizados que se pasan a IdCard; usa textos de respaldo si los campos están vacíos
   const cardData = {
     nombre: state.nombre || 'NOMBRE COMPLETO',
     apellido: state.apellido || 'APELLIDO',
@@ -91,12 +106,12 @@ export default function App() {
     fiel: state.fiel,
   };
 
-  // 28px = --ihm-r-xl; scaled so the glare radius matches the visual card corners
+  // 28px = --ihm-r-xl; se escala para que el radio del brillo coincida con las esquinas visuales de la tarjeta
   const cardBr = Math.round(28 * cardScale);
 
   return (
     <div className="app">
-      {/* Header */}
+      {/* Encabezado con logo y título de la herramienta */}
       <header className="app-header ihm-bg-halftone">
         <div className="app-header-inner">
           <div className="header-logo" dangerouslySetInnerHTML={{ __html: logoRaw }} />
@@ -107,13 +122,13 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main layout */}
+      {/* Layout principal: panel de vista previa + panel del formulario */}
       <main className="app-main">
-        {/* Preview panel — appears first on mobile */}
+        {/* Panel de vista previa — aparece primero en móvil */}
         <section className="panel-preview" ref={previewRef}>
           <div className="preview-label ihm-label">Vista previa · Credencial</div>
 
-          {/* Card with tilt — outer box defines hover area */}
+          {/* Contenedor del efecto tilt — el área de hover abarca todo el div externo */}
           <div
             ref={wrapRef}
             className="card-tilt-wrap"
@@ -121,17 +136,18 @@ export default function App() {
             onMouseMove={onMove}
             onMouseLeave={onLeave}
           >
-            {/* Outer sizer: tells the layout how much space the scaled card takes */}
+            {/* Ajusta el espacio que ocupa la tarjeta escalada en el flujo del layout */}
             <div
               className="card-scale-outer"
               style={{ width: Math.round(CARD_W * cardScale), height: Math.round(CARD_H * cardScale) }}
             >
-              {/* transform: scale keeps computed font sizes intact — zoom inflates text on iOS */}
+              {/* transform: scale mantiene los tamaños de fuente calculados; zoom los infla en iOS */}
               <div
                 className="card-scale-wrap"
                 style={{ transform: `scale(${cardScale})`, transformOrigin: 'top left' }}
               >
                 <IdCard ref={cardRef} data={cardData} avatar={state.avatar} />
+                {/* Capa de brillo holográfico enmascarada con el patrón de silueta de mango */}
                 <div
                   ref={glareRef}
                   className="card-glare"
@@ -148,18 +164,21 @@ export default function App() {
             </div>
           </div>
 
+          {/* Metadatos generados: nivel de jugo y folio actual */}
           <div className="preview-meta ihm-label">
             Nivel de jugo: <strong>{state.jugoso}%</strong>
             &nbsp;·&nbsp;
             Folio: <strong>{state.folio}</strong>
           </div>
 
+          {/* Botón que aparece en iOS 13+ para solicitar permiso del giroscopio */}
           {gyroState === 'needs-permission' && (
             <button type="button" className="ihm-btn ihm-btn-gyro" onClick={startGyro}>
               Activar efecto giroscopio
             </button>
           )}
 
+          {/* Botones de descarga; se deshabilitan mientras hay una exportación en curso */}
           <div className="export-buttons">
             <button
               type="button"
@@ -180,7 +199,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* Form panel */}
+        {/* Panel lateral con el formulario de personalización */}
         <aside className="panel-form">
           <IdForm
             state={state}
@@ -190,7 +209,7 @@ export default function App() {
         </aside>
       </main>
 
-      {/* Footer */}
+      {/* Pie de página con crédito y enlace al repositorio */}
       <footer className="app-footer">
         <span className="app-footer-credit">Fanmade por <strong>envm92</strong></span>
         <a
@@ -203,7 +222,7 @@ export default function App() {
         </a>
       </footer>
 
-      {/* Hidden full-size elements for export — no transforms, so html2canvas captures cleanly */}
+      {/* Elementos ocultos a tamaño real para exportar — sin transformaciones para que html2canvas los capture correctamente */}
       <div className="story-export-container" aria-hidden="true">
         <IdCard ref={cardExportRef} data={cardData} avatar={state.avatar} />
         <StoryFrame ref={storyRef} data={cardData} avatar={state.avatar} />

@@ -1,27 +1,22 @@
+// Marco de story para exportar en formato vertical 1080×1920 — envuelve la credencial con contexto visual
 import { forwardRef } from 'react';
 import IdCard from './IdCard';
 import './StoryFrame.css';
 
-import hojaRaw from '../assets/credencial/hoja-tropical.svg?raw';
-
-function Hoja({ className }) {
-  return <div className={className} dangerouslySetInnerHTML={{ __html: hojaRaw }} />;
-}
 
 const StoryFrame = forwardRef(function StoryFrame({ data, avatar }, ref) {
   return (
     <div className="story-frame" ref={ref}>
-      {/* Halftone background */}
+      {/* Fondo de puntos halftone */}
       <div className="story-bg" />
 
-
-      {/* Header text */}
+      {/* Encabezado con la frase de pertenencia a Mangotitlán */}
       <div className="story-header">
         <div className="story-header-sub">SOY HABITANTE DE</div>
         <div className="story-header-main">MANGOTITLÁN</div>
       </div>
 
-      {/* Card area */}
+      {/* Área central con la credencial incrustada y su sombra decorativa */}
       <div className="story-card-wrap">
         <div className="story-card-shadow" />
         <div className="story-card-inner">
@@ -29,7 +24,7 @@ const StoryFrame = forwardRef(function StoryFrame({ data, avatar }, ref) {
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Pie del story: llamada a la acción, URL de la app y handle de redes sociales */}
       <div className="story-footer">
         <div className="story-footer-cta">¿Y TU, DE DÓNDE ERES?</div>
         <div className="story-footer-url">rmch-id-radioescucha.web.app</div>

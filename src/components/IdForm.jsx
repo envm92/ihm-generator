@@ -1,3 +1,4 @@
+// Formulario de personalización de la credencial: datos del habitante y apariencia del avatar
 import {
   HEAD_LABELS, HEAD_COLORS,
   EXPRESSION_LABELS,
@@ -6,6 +7,7 @@ import {
 import { PLATAFORMA_OPTIONS } from '../utils/generators';
 import './IdForm.css';
 
+// Componente de sección con título para agrupar controles del formulario
 function Section({ title, children }) {
   return (
     <div className="form-section">
@@ -15,28 +17,13 @@ function Section({ title, children }) {
   );
 }
 
-function SwatchGrid({ options, selected, onSelect, getColor, getLabel }) {
-  return (
-    <div className="swatch-grid">
-      {options.map(key => (
-        <button
-          key={key}
-          type="button"
-          className={`swatch-btn${selected === key ? ' is-active' : ''}`}
-          onClick={() => onSelect(key)}
-          title={getLabel(key)}
-          style={getColor ? { background: getColor(key) } : {}}
-        >
-          {!getColor && <span className="swatch-label">{getLabel(key)}</span>}
-        </button>
-      ))}
-    </div>
-  );
-}
 
 export default function IdForm({ state, onChange, onGenerate }) {
+  // Actualiza un campo de primer nivel del estado
   const set = (key, val) => onChange({ ...state, [key]: val });
+  // Actualiza un campo dentro del objeto avatar
   const setAvatar = (key, val) => onChange({ ...state, avatar: { ...state.avatar, [key]: val } });
+  // Activa o desactiva un accesorio individual del avatar
   const setAccessory = (key, val) => onChange({
     ...state,
     avatar: { ...state.avatar, accessories: { ...state.avatar.accessories, [key]: val } }
