@@ -161,6 +161,12 @@
   font-size: var(--ihm-fs-xs);
 }
 
+.ihm-btn-gyro {
+  width: 100%;
+  justify-content: center;
+  font-size: var(--ihm-fs-xs);
+}
+
 /* ── Hidden story export container ─────────────────────── */
 .story-export-container {
   position: fixed;

@@ -42,7 +42,7 @@ export default function App() {
   const [exporting, setExporting] = useState(null);
   const [cardScale, setCardScale] = useState(0.68);
 
-  const { wrapRef, glareRef, onMove, onLeave } = useTilt();
+  const { wrapRef, glareRef, onMove, onLeave, gyroState, startGyro } = useTilt();
 
   const cardRef = useRef(null);
   const storyRef = useRef(null);
@@ -142,6 +142,12 @@ export default function App() {
             &nbsp;·&nbsp;
             Folio: <strong>{state.folio}</strong>
           </div>
+
+          {gyroState === 'needs-permission' && (
+            <button type="button" className="ihm-btn ihm-btn-gyro" onClick={startGyro}>
+              Activar efecto giroscopio
+            </button>
+          )}
 
           <div className="export-buttons">
             <button

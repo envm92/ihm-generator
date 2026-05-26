@@ -4,7 +4,7 @@
 
 ---
 
-Un generador de credenciales de identidad para los habitantes de **Mangotitlán**, el lugar ficticio más jugoso del universo del podcast [**Radio Manguito Chupado**](https://www.instagram.com/radio_manguito_chupado/).
+Un generador de credenciales de identidad para los habitantes de **Mangotitlán**, el lugar ficticio más jugoso del universo del podcast [**Radio Manguito Chupado**](https://www.instagram.com/radiomanguitochupado/).
 
 Arma tu mango, ingresa tu nombre, elige tu camisa y descarga tu credencial oficial (no oficial) de habitante. Con número de folio, CURP parodia, nivel de jugo y efecto holográfico incluido.
 
