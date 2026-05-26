@@ -2,6 +2,8 @@ import { useRef, useCallback, useEffect, useState } from 'react';
 
 const TILT = 8;
 const SCALE = 1.03;
+const TILT_MOBILE = 20;
+const SCALE_MOBILE = 1.08;
 const EASE = 'cubic-bezier(0.03, 0.98, 0.52, 0.99)';
 
 // Typical beta when holding phone upright in portrait; ±GYRO_RANGE maps to full tilt
@@ -12,6 +14,7 @@ export default function useTilt() {
   const wrapRef = useRef(null);
   const glareRef = useRef(null);
   const rafRef = useRef(null);
+  const isMobileRef = useRef(false);
   const [gyroState, setGyroState] = useState('idle'); // idle | needs-permission | active | unavailable
 
   const applyTilt = useCallback((x, y) => {
@@ -19,10 +22,20 @@ export default function useTilt() {
     const glare = glareRef.current;
     if (!el) return;
 
+    const mobile = isMobileRef.current;
+    const tilt = mobile ? TILT_MOBILE : TILT;
+    const scale = mobile ? SCALE_MOBILE : SCALE;
+    const shadowMult = mobile ? 70 : 40;
+    const glareOpacity = mobile ? 0.75 : 0.55;
+
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
-      el.style.transform = `perspective(900px) rotateY(${(x * TILT).toFixed(2)}deg) rotateX(${(-y * TILT).toFixed(2)}deg) scale3d(${SCALE},${SCALE},${SCALE})`;
-      el.style.transition = 'transform 100ms ' + EASE;
+      el.style.transform = `perspective(900px) rotateY(${(x * tilt).toFixed(2)}deg) rotateX(${(-y * tilt).toFixed(2)}deg) scale3d(${scale},${scale},${scale})`;
+      // Shadow offsets follow tilt direction; base Y keeps a lift shadow at rest
+      const sx = (x * shadowMult).toFixed(1);
+      const sy = (-y * (shadowMult * 0.5) + 22).toFixed(1);
+      el.style.boxShadow = `${sx}px ${sy}px 60px rgba(42,26,6,0.52)`;
+      el.style.transition = `transform 100ms ${EASE}, box-shadow 100ms ${EASE}`;
 
       if (glare) {
         const hue = Math.round((x + 0.5) * 360);
@@ -38,7 +51,7 @@ export default function useTilt() {
             hsl(${(hue+270)%360}deg,100%,65%) 100%
           )
         `;
-        glare.style.opacity = '0.55';
+        glare.style.opacity = String(glareOpacity);
       }
     });
   }, []);
@@ -48,7 +61,8 @@ export default function useTilt() {
     const glare = glareRef.current;
     if (!el) return;
     el.style.transform = '';
-    el.style.transition = `transform 400ms ${EASE}`;
+    el.style.boxShadow = '';
+    el.style.transition = `transform 400ms ${EASE}, box-shadow 400ms ${EASE}`;
     if (glare) glare.style.opacity = '0';
   }, []);
 
@@ -78,6 +92,7 @@ export default function useTilt() {
     try {
       const permission = await DeviceOrientationEvent.requestPermission();
       if (permission === 'granted') {
+        isMobileRef.current = true;
         window.addEventListener('deviceorientation', handleOrientation);
         setGyroState('active');
       } else {
@@ -103,6 +118,7 @@ export default function useTilt() {
       setGyroState('needs-permission');
     } else {
       // Android / desktop with gyro — start immediately
+      isMobileRef.current = true;
       window.addEventListener('deviceorientation', handleOrientation);
       setGyroState('active');
       return () => window.removeEventListener('deviceorientation', handleOrientation);

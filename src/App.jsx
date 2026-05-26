@@ -45,6 +45,7 @@ export default function App() {
   const { wrapRef, glareRef, onMove, onLeave, gyroState, startGyro } = useTilt();
 
   const cardRef = useRef(null);
+  const cardExportRef = useRef(null);
   const storyRef = useRef(null);
   const previewRef = useRef(null);
 
@@ -69,7 +70,7 @@ export default function App() {
 
   const handleDownloadCard = async () => {
     setExporting('card');
-    try { await downloadCard(cardRef, state.nombre || 'habitante'); }
+    try { await downloadCard(cardExportRef, state.nombre || 'habitante'); }
     finally { setExporting(null); }
   };
 
@@ -120,20 +121,30 @@ export default function App() {
             onMouseMove={onMove}
             onMouseLeave={onLeave}
           >
-            <div className="card-scale-wrap" style={{ zoom: cardScale }}>
-              <IdCard ref={cardRef} data={cardData} avatar={state.avatar} />
+            {/* Outer sizer: tells the layout how much space the scaled card takes */}
+            <div
+              className="card-scale-outer"
+              style={{ width: Math.round(CARD_W * cardScale), height: Math.round(CARD_H * cardScale) }}
+            >
+              {/* transform: scale keeps computed font sizes intact — zoom inflates text on iOS */}
               <div
-                ref={glareRef}
-                className="card-glare"
-                style={{
-                  maskImage: `url("${SILUETA_MASK_URL}")`,
-                  maskSize: '220px 220px',
-                  maskRepeat: 'repeat',
-                  WebkitMaskImage: `url("${SILUETA_MASK_URL}")`,
-                  WebkitMaskSize: '220px 220px',
-                  WebkitMaskRepeat: 'repeat',
-                }}
-              />
+                className="card-scale-wrap"
+                style={{ transform: `scale(${cardScale})`, transformOrigin: 'top left' }}
+              >
+                <IdCard ref={cardRef} data={cardData} avatar={state.avatar} />
+                <div
+                  ref={glareRef}
+                  className="card-glare"
+                  style={{
+                    maskImage: `url("${SILUETA_MASK_URL}")`,
+                    maskSize: '220px 220px',
+                    maskRepeat: 'repeat',
+                    WebkitMaskImage: `url("${SILUETA_MASK_URL}")`,
+                    WebkitMaskSize: '220px 220px',
+                    WebkitMaskRepeat: 'repeat',
+                  }}
+                />
+              </div>
             </div>
           </div>
 
@@ -152,7 +163,7 @@ export default function App() {
           <div className="export-buttons">
             <button
               type="button"
-              className="ihm-btn ihm-btn-ink"
+              className="ihm-btn ihm-btn-ink ihm-btn-card-dl"
               onClick={handleDownloadCard}
               disabled={!!exporting}
             >
@@ -192,8 +203,9 @@ export default function App() {
         </a>
       </footer>
 
-      {/* Hidden story frame at full size for export */}
+      {/* Hidden full-size elements for export — no transforms, so html2canvas captures cleanly */}
       <div className="story-export-container" aria-hidden="true">
+        <IdCard ref={cardExportRef} data={cardData} avatar={state.avatar} />
         <StoryFrame ref={storyRef} data={cardData} avatar={state.avatar} />
       </div>
     </div>

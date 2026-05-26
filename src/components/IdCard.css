@@ -8,6 +8,8 @@
   border-radius: var(--ihm-r-xl);
   overflow: hidden;
   flex-shrink: 0;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* ── Guilloché background ───────────────────────────────── */

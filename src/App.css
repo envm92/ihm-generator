@@ -89,18 +89,27 @@
 /* ── Card tilt wrapper ──────────────────────────────────── */
 .card-tilt-wrap {
   flex-shrink: 0;
-  will-change: transform;
+  will-change: transform, box-shadow;
+  border-radius: var(--card-br, 19px);
+  box-shadow: 0px 12px 32px rgba(42, 26, 6, 0.28);
+}
+
+.card-scale-outer {
+  position: relative;
+  flex-shrink: 0;
 }
 
 .card-scale-wrap {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* Glare div rendered as sibling of IdCard so it sits above the card stacking context */
 .card-glare {
   position: absolute;
   inset: 0;
-  border-radius: var(--card-br, 19px);
+  border-radius: var(--ihm-r-xl);
   pointer-events: none;
   z-index: 10;
   opacity: 0;
@@ -236,7 +245,6 @@
     overflow-y: visible;
   }
 
-  /* Buttons full-width on mobile */
   .export-buttons {
     flex-direction: column;
   }
@@ -247,6 +255,7 @@
     padding: 14px 20px;
     font-size: var(--ihm-fs-base);
   }
+
 }
 
 /* ══════════════════════════════════════════════════════════

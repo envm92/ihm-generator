@@ -33,7 +33,7 @@ const StoryFrame = forwardRef(function StoryFrame({ data, avatar }, ref) {
       <div className="story-footer">
         <div className="story-footer-cta">¿Y TU, DE DÓNDE ERES?</div>
         <div className="story-footer-url">rmch-id-radioescucha.web.app</div>
-        <div className="story-footer-handle">@radio_manguito_chupado</div>
+        <div className="story-footer-handle">@radiomanguitochupado</div>
       </div>
     </div>
   );
