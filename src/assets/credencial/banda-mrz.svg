@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 90">
+  <rect width="900" height="90" fill="#FFD93D"></rect>
+  <rect y="0" width="900" height="6" fill="#D9342B"></rect>
+  <rect y="84" width="900" height="6" fill="#D9342B"></rect>
+  <g font-family="&#39;Courier New&#39;, monospace" font-size="20" font-weight="700" fill="#2a1a06" letter-spacing="2">
+    <text x="22" y="36">IHM&lt;&lt;MANGOTITLAN&lt;&lt;HABITANTE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
+    <text x="22" y="64">2604&lt;&lt;7M2604&lt;&lt;MGTL&lt;&lt;MX&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
+  </g>
+</svg>

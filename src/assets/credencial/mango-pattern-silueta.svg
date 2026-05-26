@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220" preserveAspectRatio="xMidYMid slice">
+
+  <defs>
+    <symbol id="m" viewBox="-50 -50 100 100" overflow="visible">
+      
+      <path d="M -30 -8&#xA;               C -34 -32, -10 -44,  8 -42&#xA;               C  30 -40, 38 -22,  34   0&#xA;               C  30  22, 14  36, -6  36&#xA;               C -28 36, -38 18, -34  0 Z" fill="currentColor"></path>
+      
+      <path d="M 4 -42 L 6 -50 L 12 -50 L 10 -42 Z&#xA;               M 10 -48 C 26 -54, 44 -46, 48 -32&#xA;               C 32 -28, 18 -36, 10 -44 Z" fill="currentColor"></path>
+    </symbol>
+  </defs>
+
+  <g color="#2a1a06" opacity="0.18">
+
+    
+
+    
+    <use href="#m" x="29" y="24" width="42" height="42" transform="rotate(-20 50 45)"></use>
+
+    
+    <use href="#m" x="142" y="57" width="36" height="36" transform="rotate(55 160 75)"></use>
+
+    
+    <use href="#m" x="69" y="114" width="42" height="42" transform="rotate(140 90 135)"></use>
+
+    
+    <use href="#m" x="19" y="169" width="32" height="32" transform="rotate(210 35 185)"></use>
+
+    
+    <use href="#m" x="162" y="147" width="36" height="36" transform="rotate(-55 180 165)"></use>
+
+
+    
+    
+    <use href="#m" x="-18" y="92" width="36" height="36" transform="rotate(95 0 110)"></use>
+    
+    <use href="#m" x="202" y="92" width="36" height="36" transform="rotate(95 220 110)"></use>
+
+
+    
+    
+    <use href="#m" x="98" y="-17" width="34" height="34" transform="rotate(175 115 0)"></use>
+    
+    <use href="#m" x="98" y="203" width="34" height="34" transform="rotate(175 115 220)"></use>
+
+
+    
+    
+    <use href="#m" x="206" y="206" width="28" height="28" transform="rotate(40 220 220)"></use>
+    <use href="#m" x="-14" y="206" width="28" height="28" transform="rotate(40 0 220)"></use>
+    <use href="#m" x="206" y="-14" width="28" height="28" transform="rotate(40 220 0)"></use>
+    <use href="#m" x="-14" y="-14" width="28" height="28" transform="rotate(40 0 0)"></use>
+
+  </g>
+</svg>

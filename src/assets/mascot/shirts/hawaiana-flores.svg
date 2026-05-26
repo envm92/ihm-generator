@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs><pattern id="p-flores" x="0" y="0" width="56" height="56" patternUnits="userSpaceOnUse">
+      <rect width="56" height="56" fill="#3B5BA5"></rect>
+      <g fill="#F3D9E6">
+        <circle cx="14" cy="14" r="4"></circle>
+        <circle cx="10" cy="10" r="2.2"></circle><circle cx="18" cy="10" r="2.2"></circle>
+        <circle cx="10" cy="18" r="2.2"></circle><circle cx="18" cy="18" r="2.2"></circle>
+      </g>
+      <circle cx="14" cy="14" r="1.5" fill="#E8B547"></circle>
+      <g fill="#F3D9E6">
+        <circle cx="42" cy="42" r="4"></circle>
+        <circle cx="38" cy="38" r="2.2"></circle><circle cx="46" cy="38" r="2.2"></circle>
+        <circle cx="38" cy="46" r="2.2"></circle><circle cx="46" cy="46" r="2.2"></circle>
+      </g>
+      <circle cx="42" cy="42" r="1.5" fill="#E8B547"></circle>
+    </pattern></defs>
+  
+  <path d="M 0 360 Q 50 340, 145 348 L 200 400 L 255 348 Q 350 340, 400 360 L 400 500 L 0 500 Z" fill="url(#p-flores)" stroke="#2a1a06" stroke-width="8" stroke-linejoin="round"></path>
+  
+  <path d="M 60 380 Q 80 420, 60 470" fill="none" stroke="#2a1a06" stroke-width="3" opacity="0.4"></path>
+  <path d="M 340 380 Q 320 420, 340 470" fill="none" stroke="#2a1a06" stroke-width="3" opacity="0.4"></path>
+</svg>

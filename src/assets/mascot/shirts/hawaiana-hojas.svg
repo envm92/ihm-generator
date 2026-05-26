@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs><pattern id="p-hojas" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
+      <rect width="64" height="64" fill="#2DB5C9"></rect>
+      <g fill="#1E7A3F" stroke="#0E4D24" stroke-width="1.2">
+        <ellipse cx="16" cy="18" rx="9" ry="5" transform="rotate(35 16 18)"></ellipse>
+        <ellipse cx="48" cy="46" rx="9" ry="5" transform="rotate(-25 48 46)"></ellipse>
+        <ellipse cx="46" cy="14" rx="6" ry="3.5" transform="rotate(70 46 14)"></ellipse>
+        <ellipse cx="18" cy="48" rx="6" ry="3.5" transform="rotate(-60 18 48)"></ellipse>
+      </g>
+    </pattern></defs>
+  
+  <path d="M 0 360 Q 50 340, 145 348 L 200 400 L 255 348 Q 350 340, 400 360 L 400 500 L 0 500 Z" fill="url(#p-hojas)" stroke="#2a1a06" stroke-width="8" stroke-linejoin="round"></path>
+  
+  <path d="M 60 380 Q 80 420, 60 470" fill="none" stroke="#2a1a06" stroke-width="3" opacity="0.4"></path>
+  <path d="M 340 380 Q 320 420, 340 470" fill="none" stroke="#2a1a06" stroke-width="3" opacity="0.4"></path>
+</svg>

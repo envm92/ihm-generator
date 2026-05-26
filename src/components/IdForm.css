@@ -1,0 +1,257 @@
+.id-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ihm-sp-4);
+}
+
+/* ── Section ────────────────────────────────────────────── */
+.form-section {
+  background: var(--ihm-white);
+  border: var(--ihm-border-3);
+  border-radius: var(--ihm-r-lg);
+  padding: var(--ihm-sp-4);
+  box-shadow: var(--ihm-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ihm-sp-3);
+}
+
+.form-section-title {
+  font-family: var(--ihm-font-display);
+  font-weight: var(--ihm-fw-black);
+  font-size: var(--ihm-fs-md);
+  color: var(--ihm-ink);
+  letter-spacing: var(--ihm-tracking-wide);
+  text-transform: uppercase;
+  padding-bottom: var(--ihm-sp-2);
+  border-bottom: var(--ihm-border-2);
+}
+
+/* ── Form rows ──────────────────────────────────────────── */
+.form-row {
+  display: flex;
+  gap: var(--ihm-sp-3);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ihm-sp-1);
+  flex: 1;
+}
+
+.form-group--half {
+  flex: none;
+  width: calc(50% - var(--ihm-sp-2));
+}
+
+/* ── Head swatches ──────────────────────────────────────── */
+.swatch-grid--heads {
+  display: flex;
+  gap: var(--ihm-sp-2);
+}
+
+.head-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border: var(--ihm-border-2);
+  border-radius: var(--ihm-r-md);
+  background: var(--ihm-cream);
+  cursor: pointer;
+  font-family: var(--ihm-font-body);
+  font-size: var(--ihm-fs-xs);
+  font-weight: var(--ihm-fw-bold);
+  color: var(--ihm-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform var(--ihm-tx-fast), box-shadow var(--ihm-tx-fast);
+  flex: 1;
+}
+
+.head-swatch:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--ihm-shadow-sm);
+}
+
+.head-swatch.is-active {
+  border-color: var(--ihm-red);
+  box-shadow: 0 0 0 2px var(--ihm-red);
+  background: var(--ihm-cream);
+}
+
+.head-swatch-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--ihm-r-full);
+  border: 2px solid var(--ihm-ink);
+}
+
+/* ── Pill grid (hair, expressions, shirts) ──────────────── */
+.pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ihm-sp-1);
+}
+
+.pill-btn {
+  padding: 5px 12px;
+  border: var(--ihm-border-2);
+  border-radius: var(--ihm-r-full);
+  background: var(--ihm-cream);
+  font-family: var(--ihm-font-body);
+  font-size: var(--ihm-fs-xs);
+  font-weight: var(--ihm-fw-bold);
+  color: var(--ihm-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background var(--ihm-tx-fast), color var(--ihm-tx-fast), transform var(--ihm-tx-fast);
+}
+
+.pill-btn:hover {
+  background: var(--ihm-yellow);
+}
+
+.pill-btn.is-active {
+  background: var(--ihm-ink);
+  color: var(--ihm-white);
+  border-color: var(--ihm-ink);
+}
+
+/* ── Color swatches ─────────────────────────────────────── */
+.color-swatches {
+  display: flex;
+  gap: var(--ihm-sp-2);
+  flex-wrap: wrap;
+}
+
+/* ── Accessories ────────────────────────────────────────── */
+.accessory-grid {
+  display: flex;
+  gap: var(--ihm-sp-2);
+}
+
+.accessory-btn {
+  flex: 1;
+  padding: 8px 10px;
+  border: var(--ihm-border-2);
+  border-radius: var(--ihm-r-md);
+  background: var(--ihm-cream);
+  font-family: var(--ihm-font-display);
+  font-size: var(--ihm-fs-xs);
+  font-weight: var(--ihm-fw-black);
+  color: var(--ihm-ink);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background var(--ihm-tx-fast), color var(--ihm-tx-fast);
+}
+
+.accessory-btn.is-active {
+  background: var(--ihm-accent-blue);
+  color: var(--ihm-white);
+  border-color: var(--ihm-accent-blue);
+}
+
+/* ── Extras ─────────────────────────────────────────────── */
+.extras-row {
+  display: flex;
+  gap: var(--ihm-sp-3);
+}
+
+.fiel-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ihm-sp-2);
+  padding: 10px 18px;
+  border: var(--ihm-border-3);
+  border-radius: var(--ihm-r-full);
+  background: var(--ihm-cream);
+  font-family: var(--ihm-font-display);
+  font-weight: var(--ihm-fw-black);
+  font-size: var(--ihm-fs-sm);
+  color: var(--ihm-ink);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--ihm-tx-fast);
+  box-shadow: var(--ihm-shadow-sm);
+}
+
+.fiel-toggle:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--ihm-shadow-md);
+}
+
+.fiel-toggle.is-active {
+  background: var(--ihm-red);
+  color: var(--ihm-white);
+  border-color: var(--ihm-red);
+}
+
+.fiel-stamp {
+  font-size: 18px;
+}
+
+.regenerar-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: var(--ihm-fs-md);
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE
+══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: var(--ihm-sp-2);
+  }
+
+  .form-group--half {
+    width: 100%;
+  }
+
+  /* Bigger tap targets */
+  .pill-btn {
+    padding: 8px 14px;
+    font-size: var(--ihm-fs-xs);
+  }
+
+  .accessory-btn {
+    padding: 10px 8px;
+  }
+
+  .ihm-swatch {
+    width: 40px;
+    height: 40px;
+  }
+
+  .head-swatch {
+    padding: 8px 6px;
+  }
+
+  .head-swatch-dot {
+    width: 32px;
+    height: 32px;
+  }
+
+  .fiel-toggle {
+    font-size: 11px;
+    padding: 10px 14px;
+  }
+
+  .regenerar-btn {
+    padding: 14px 20px;
+  }
+
+  /* Input sizing */
+  .ihm-input,
+  .ihm-select {
+    font-size: var(--ihm-fs-base);
+    padding: 12px 14px;
+  }
+}

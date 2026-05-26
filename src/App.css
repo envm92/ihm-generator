@@ -1,0 +1,253 @@
+/* ── App shell ──────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--ihm-cream);
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.app-header {
+  border-bottom: var(--ihm-border-4);
+  padding: var(--ihm-sp-3) var(--ihm-sp-5);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--ihm-sp-4);
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header-logo {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+.header-logo svg { width: 100%; height: 100%; }
+
+.header-title {
+  font-family: var(--ihm-font-display);
+  font-weight: var(--ihm-fw-black);
+  font-size: var(--ihm-fs-xl);
+  color: var(--ihm-white);
+  -webkit-text-stroke: 3px var(--ihm-ink);
+  paint-order: stroke fill;
+  letter-spacing: var(--ihm-tracking-wide);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.header-subtitle {
+  font-family: var(--ihm-font-body);
+  font-size: var(--ihm-fs-sm);
+  font-weight: var(--ihm-fw-bold);
+  color: var(--ihm-ink);
+  letter-spacing: var(--ihm-tracking-wider);
+  text-transform: uppercase;
+}
+
+/* ── Main layout — desktop: two columns ─────────────────── */
+.app-main {
+  display: flex;
+  flex: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* ── Preview panel ──────────────────────────────────────── */
+.panel-preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--ihm-sp-5) var(--ihm-sp-4);
+  gap: var(--ihm-sp-3);
+  /* Sticky on desktop so you always see the card while scrolling the form */
+  position: sticky;
+  top: 86px;
+  max-height: calc(100vh - 86px);
+  overflow: hidden;
+}
+
+.preview-label {
+  align-self: flex-start;
+}
+
+.preview-meta {
+  align-self: flex-start;
+  font-size: var(--ihm-fs-xs);
+}
+
+/* ── Card tilt wrapper ──────────────────────────────────── */
+.card-tilt-wrap {
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+.card-scale-wrap {
+  position: relative;
+}
+
+/* Glare div rendered as sibling of IdCard so it sits above the card stacking context */
+.card-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-br, 19px);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 200ms;
+  mix-blend-mode: color-dodge;
+}
+
+/* ── Export buttons ─────────────────────────────────────── */
+.export-buttons {
+  display: flex;
+  gap: var(--ihm-sp-3);
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.export-buttons .ihm-btn {
+  flex: 1;
+  justify-content: center;
+  min-width: 140px;
+}
+
+/* ── Form panel ─────────────────────────────────────────── */
+.panel-form {
+  width: 380px;
+  flex-shrink: 0;
+  padding: var(--ihm-sp-5);
+  border-left: var(--ihm-border-3);
+  overflow-y: auto;
+  max-height: calc(100vh - 86px);
+  position: sticky;
+  top: 86px;
+  background: var(--ihm-cream);
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ihm-sp-4);
+  padding: var(--ihm-sp-3) var(--ihm-sp-5);
+  border-top: var(--ihm-border-3);
+  background: var(--ihm-cream);
+}
+
+.app-footer-credit {
+  font-family: var(--ihm-font-body);
+  font-size: var(--ihm-fs-xs);
+  font-weight: var(--ihm-fw-bold);
+  letter-spacing: var(--ihm-tracking-wider);
+  text-transform: uppercase;
+  color: var(--ihm-ink);
+}
+
+.ihm-btn-sm {
+  padding: 6px 14px;
+  font-size: var(--ihm-fs-xs);
+}
+
+/* ── Hidden story export container ─────────────────────── */
+.story-export-container {
+  position: fixed;
+  left: -9999px;
+  top: -9999px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ══════════════════════════════════════════════════════════
+   TABLET — ≤ 1024px
+══════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .header-title {
+    font-size: var(--ihm-fs-lg);
+  }
+
+  .panel-form {
+    width: 320px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE — ≤ 768px : single column, preview on top
+══════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .app-header {
+    padding: var(--ihm-sp-2) var(--ihm-sp-3);
+  }
+
+  .header-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .header-title {
+    font-size: var(--ihm-fs-md);
+    -webkit-text-stroke: 2px var(--ihm-ink);
+  }
+
+  .header-subtitle {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  /* Stack columns vertically */
+  .app-main {
+    flex-direction: column;
+  }
+
+  /* Preview panel: full width, not sticky */
+  .panel-preview {
+    width: 100%;
+    position: static;
+    max-height: none;
+    padding: var(--ihm-sp-4) var(--ihm-sp-3);
+    border-bottom: var(--ihm-border-3);
+  }
+
+  /* Form panel: full width, not sticky, no border */
+  .panel-form {
+    width: 100%;
+    position: static;
+    max-height: none;
+    border-left: none;
+    padding: var(--ihm-sp-3);
+    overflow-y: visible;
+  }
+
+  /* Buttons full-width on mobile */
+  .export-buttons {
+    flex-direction: column;
+  }
+
+  .export-buttons .ihm-btn {
+    width: 100%;
+    min-width: unset;
+    padding: 14px 20px;
+    font-size: var(--ihm-fs-base);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SMALL MOBILE — ≤ 400px
+══════════════════════════════════════════════════════════ */
+@media (max-width: 400px) {
+  .header-subtitle {
+    display: none;
+  }
+}

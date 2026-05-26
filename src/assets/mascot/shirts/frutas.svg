@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs><pattern id="p-frutas" x="0" y="0" width="70" height="70" patternUnits="userSpaceOnUse">
+      <rect width="70" height="70" fill="#FFD93D"></rect>
+      
+      <ellipse cx="18" cy="20" rx="9" ry="11" fill="#FF9A3D" stroke="#2a1a06" stroke-width="1.6"></ellipse>
+      <path d="M 20 11 Q 26 4 32 9 Q 26 16 22 14 Z" fill="#3A8F3F" stroke="#2a1a06" stroke-width="1.2"></path>
+      
+      <path d="M 38 52 a 12 12 0 0 1 24 0 Z" fill="#E94B5C" stroke="#2a1a06" stroke-width="1.6"></path>
+      <path d="M 38 52 a 12 12 0 0 1 24 0" fill="none" stroke="#fff" stroke-width="2.5"></path>
+      <path d="M 36 52 a 14 14 0 0 1 28 0" fill="none" stroke="#3A8F3F" stroke-width="3"></path>
+      <circle cx="46" cy="46" r="0.8" fill="#2a1a06"></circle>
+      <circle cx="54" cy="46" r="0.8" fill="#2a1a06"></circle>
+      <circle cx="50" cy="49" r="0.8" fill="#2a1a06"></circle>
+    </pattern></defs>
+  
+  <path d="M 0 360 Q 50 340, 145 348 L 200 400 L 255 348 Q 350 340, 400 360 L 400 500 L 0 500 Z" fill="url(#p-frutas)" stroke="#2a1a06" stroke-width="8" stroke-linejoin="round"></path>
+  
+  <path d="M 60 380 Q 80 420, 60 470" fill="none" stroke="#2a1a06" stroke-width="3" opacity="0.4"></path>
+  <path d="M 340 380 Q 320 420, 340 470" fill="none" stroke="#2a1a06" stroke-width="3" opacity="0.4"></path>
+</svg>

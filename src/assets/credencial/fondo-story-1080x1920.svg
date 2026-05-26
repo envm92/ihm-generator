@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs>
+    <pattern id="halftone" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect width="80" height="80" fill="#FFC629"></rect>
+      <g fill="#E89B1F" opacity="0.85">
+        <circle cx="10" cy="10" r="3"></circle><circle cx="30" cy="10" r="2.2"></circle>
+        <circle cx="50" cy="10" r="3"></circle><circle cx="70" cy="10" r="2.2"></circle>
+        <circle cx="20" cy="30" r="2.5"></circle><circle cx="40" cy="30" r="3.2"></circle>
+        <circle cx="60" cy="30" r="2.5"></circle>
+        <circle cx="10" cy="50" r="2.2"></circle><circle cx="30" cy="50" r="3"></circle>
+        <circle cx="50" cy="50" r="2.2"></circle><circle cx="70" cy="50" r="3"></circle>
+        <circle cx="20" cy="70" r="3.2"></circle><circle cx="40" cy="70" r="2.5"></circle>
+        <circle cx="60" cy="70" r="3.2"></circle>
+      </g>
+    </pattern>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="65%">
+      <stop offset="60%" stop-color="#000" stop-opacity="0"></stop>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.18"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#halftone)"></rect>
+  <rect width="1080" height="1920" fill="url(#vignette)"></rect>
+</svg>

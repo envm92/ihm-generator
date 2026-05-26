@@ -1,0 +1,384 @@
+/* ============================================================
+   IHM — Habitante de Mangotitlán
+   Theme tokens + utilities
+   ============================================================
+   Uso:
+     <link rel="stylesheet" href="theme.css">
+   Después accedés a las variables vía var(--ihm-*) o usás las
+   clases utility (.ihm-btn, .ihm-card, .ihm-badge, etc.).
+============================================================ */
+
+:root {
+  /* ---------- BRAND ---------- */
+  --ihm-red:           #D9342B;
+  --ihm-red-dark:      #B12822;
+  --ihm-yellow:        #FFD93D;
+  --ihm-yellow-bg:     #FFC629;   /* fondos amarillos saturados */
+  --ihm-yellow-dot:    #E89B1F;   /* puntitos del halftone */
+  --ihm-cream:         #FFF6E0;   /* fondo de la credencial */
+  --ihm-cream-line:    #E8D9B5;   /* guilloché / decorativos */
+  --ihm-ink:           #2a1a06;   /* outline marrón oscuro */
+  --ihm-ink-soft:      #6B4A20;
+  --ihm-white:         #FFFFFF;
+  --ihm-black:         #1f1a18;
+  --ihm-success:       #3A8F3F;   /* verde hoja mango */
+  --ihm-accent-blue:   #3D6DCF;   /* secundario hawaiana */
+  --ihm-accent-pink:   #FF7BA8;
+
+  /* ---------- PIEL MANGO ---------- */
+  --ihm-mango-classic: #FFCB2F;
+  --ihm-mango-classic-shade: #E8A923;
+  --ihm-mango-maduro:  #FFB347;
+  --ihm-mango-maduro-shade:  #D9842B;
+  --ihm-mango-verde:   #C8D85E;
+  --ihm-mango-verde-shade:   #9CB23C;
+  --ihm-mango-rosa:    #FFA585;
+  --ihm-mango-rosa-shade:    #D97560;
+
+  /* ---------- PELO ---------- */
+  --ihm-hair-negro:    #1f1a18;
+  --ihm-hair-cafe:     #6b3a1c;
+  --ihm-hair-rubio:    #E8B547;
+  --ihm-hair-rojizo:   #C24A1A;
+  --ihm-hair-canoso:   #8a8a8a;
+  --ihm-hair-rosa:     #FF7BA8;
+  --ihm-hair-azul:     #3D6DCF;
+
+  /* ---------- TIPOGRAFÍA ---------- */
+  --ihm-font-display:  Impact, 'Arial Black', 'Helvetica Neue', sans-serif;
+  --ihm-font-body:     Helvetica, Arial, sans-serif;
+  --ihm-font-mono:     'Courier New', ui-monospace, monospace;
+
+  --ihm-fs-xs:   11px;
+  --ihm-fs-sm:   13px;
+  --ihm-fs-base: 15px;
+  --ihm-fs-md:   18px;
+  --ihm-fs-lg:   24px;
+  --ihm-fs-xl:   32px;
+  --ihm-fs-2xl:  46px;
+  --ihm-fs-3xl:  68px;
+
+  --ihm-fw-regular: 400;
+  --ihm-fw-medium:  600;
+  --ihm-fw-bold:    700;
+  --ihm-fw-black:   900;
+
+  --ihm-tracking-tight:  -0.5px;
+  --ihm-tracking-base:    0;
+  --ihm-tracking-wide:    1.5px;
+  --ihm-tracking-wider:   3px;
+
+  /* ---------- BORDES (estilo cartoon) ---------- */
+  --ihm-border-1: 2px solid var(--ihm-ink);
+  --ihm-border-2: 3px solid var(--ihm-ink);
+  --ihm-border-3: 4px solid var(--ihm-ink);   /* default cards */
+  --ihm-border-4: 6px solid var(--ihm-ink);   /* grandes / hero */
+
+  --ihm-stroke-thin:  2px;
+  --ihm-stroke-base:  4px;
+  --ihm-stroke-bold:  6px;
+  --ihm-stroke-xbold: 8px;
+
+  /* ---------- RADIOS ---------- */
+  --ihm-r-xs:   4px;
+  --ihm-r-sm:   8px;
+  --ihm-r-md:   12px;
+  --ihm-r-lg:   20px;
+  --ihm-r-xl:   28px;
+  --ihm-r-full: 9999px;
+
+  /* ---------- SOMBRAS (offset estilo sticker) ---------- */
+  --ihm-shadow-sm:  3px 3px 0 var(--ihm-ink);
+  --ihm-shadow-md:  6px 6px 0 var(--ihm-ink);
+  --ihm-shadow-lg:  8px 8px 0 var(--ihm-ink);
+  --ihm-shadow-xl: 12px 12px 0 var(--ihm-ink);
+  --ihm-shadow-red:    6px 6px 0 var(--ihm-red);
+  --ihm-shadow-yellow: 6px 6px 0 var(--ihm-yellow);
+  --ihm-shadow-soft:   0 6px 24px rgba(42, 26, 6, 0.18);
+
+  /* ---------- SPACING ---------- */
+  --ihm-sp-0:   0;
+  --ihm-sp-1:   4px;
+  --ihm-sp-2:   8px;
+  --ihm-sp-3:   12px;
+  --ihm-sp-4:   16px;
+  --ihm-sp-5:   24px;
+  --ihm-sp-6:   32px;
+  --ihm-sp-7:   48px;
+  --ihm-sp-8:   64px;
+
+  /* ---------- TRANSICIONES ---------- */
+  --ihm-tx-fast:  120ms ease-out;
+  --ihm-tx-base:  180ms ease-out;
+  --ihm-tx-slow:  280ms ease-out;
+}
+
+/* ============================================================
+   FONDO HALFTONE — clase utility
+============================================================ */
+.ihm-bg-halftone {
+  background-color: var(--ihm-yellow-bg);
+  background-image: radial-gradient(circle, var(--ihm-yellow-dot) 1.5px, transparent 2px);
+  background-size: 20px 20px;
+}
+.ihm-bg-halftone-dense {
+  background-color: var(--ihm-yellow-bg);
+  background-image: radial-gradient(circle, var(--ihm-yellow-dot) 2px, transparent 2.5px);
+  background-size: 14px 14px;
+}
+.ihm-bg-cream { background: var(--ihm-cream); }
+.ihm-bg-red   { background: var(--ihm-red); }
+.ihm-bg-yellow { background: var(--ihm-yellow); }
+.ihm-bg-ink   { background: var(--ihm-ink); color: var(--ihm-white); }
+
+/* ============================================================
+   TIPOGRAFÍA
+============================================================ */
+.ihm-display {
+  font-family: var(--ihm-font-display);
+  font-weight: var(--ihm-fw-black);
+  letter-spacing: var(--ihm-tracking-wide);
+  line-height: 1;
+  text-transform: uppercase;
+}
+.ihm-display-stroke {
+  font-family: var(--ihm-font-display);
+  font-weight: var(--ihm-fw-black);
+  color: var(--ihm-white);
+  -webkit-text-stroke: 4px var(--ihm-ink);
+  paint-order: stroke fill;
+  text-transform: uppercase;
+  letter-spacing: var(--ihm-tracking-wider);
+}
+.ihm-label {
+  font-family: var(--ihm-font-body);
+  font-size: var(--ihm-fs-xs);
+  font-weight: var(--ihm-fw-bold);
+  letter-spacing: var(--ihm-tracking-wide);
+  color: var(--ihm-red);
+  text-transform: uppercase;
+}
+.ihm-mono {
+  font-family: var(--ihm-font-mono);
+  font-weight: var(--ihm-fw-bold);
+  letter-spacing: 1px;
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+.ihm-card {
+  background: var(--ihm-cream);
+  border: var(--ihm-border-3);
+  border-radius: var(--ihm-r-lg);
+  padding: var(--ihm-sp-5);
+  box-shadow: var(--ihm-shadow-md);
+}
+.ihm-card-white { background: var(--ihm-white); }
+.ihm-card-elevated { box-shadow: var(--ihm-shadow-lg); }
+.ihm-card-tilt { transform: rotate(-1deg); }
+
+/* ============================================================
+   BOTONES
+============================================================ */
+.ihm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ihm-sp-2);
+  background: var(--ihm-red);
+  color: var(--ihm-white);
+  font-family: var(--ihm-font-display);
+  font-weight: var(--ihm-fw-black);
+  font-size: var(--ihm-fs-md);
+  letter-spacing: var(--ihm-tracking-wide);
+  text-transform: uppercase;
+  border: var(--ihm-border-3);
+  border-radius: var(--ihm-r-full);
+  padding: 12px 24px;
+  cursor: pointer;
+  box-shadow: var(--ihm-shadow-sm);
+  transition: transform var(--ihm-tx-fast), box-shadow var(--ihm-tx-fast);
+}
+.ihm-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--ihm-shadow-md);
+}
+.ihm-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--ihm-ink);
+}
+.ihm-btn-yellow { background: var(--ihm-yellow); color: var(--ihm-ink); }
+.ihm-btn-cream  { background: var(--ihm-cream); color: var(--ihm-ink); }
+.ihm-btn-ink    { background: var(--ihm-ink); color: var(--ihm-white); }
+.ihm-btn-sm     { font-size: var(--ihm-fs-sm); padding: 8px 16px; border-width: 2px; }
+
+/* ============================================================
+   BADGES / CHIPS
+============================================================ */
+.ihm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ihm-white);
+  color: var(--ihm-ink);
+  border: var(--ihm-border-2);
+  border-radius: var(--ihm-r-full);
+  padding: 4px 12px;
+  font-family: var(--ihm-font-body);
+  font-size: var(--ihm-fs-xs);
+  font-weight: var(--ihm-fw-black);
+  letter-spacing: var(--ihm-tracking-wide);
+  text-transform: uppercase;
+}
+.ihm-badge-red    { background: var(--ihm-red);    color: var(--ihm-white); }
+.ihm-badge-yellow { background: var(--ihm-yellow); color: var(--ihm-ink);   }
+
+/* ============================================================
+   INPUTS
+============================================================ */
+.ihm-input,
+.ihm-select {
+  width: 100%;
+  background: var(--ihm-white);
+  color: var(--ihm-ink);
+  font-family: var(--ihm-font-body);
+  font-size: var(--ihm-fs-md);
+  font-weight: var(--ihm-fw-bold);
+  border: var(--ihm-border-2);
+  border-radius: var(--ihm-r-md);
+  padding: 10px 14px;
+  outline: none;
+  transition: box-shadow var(--ihm-tx-fast);
+}
+.ihm-input:focus,
+.ihm-select:focus {
+  box-shadow: var(--ihm-shadow-sm);
+  border-color: var(--ihm-red);
+}
+.ihm-input::placeholder { color: var(--ihm-ink-soft); opacity: 0.7; }
+
+/* ============================================================
+   SWATCH (selector de colores)
+============================================================ */
+.ihm-swatch {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--ihm-r-full);
+  border: var(--ihm-border-2);
+  cursor: pointer;
+  transition: transform var(--ihm-tx-fast);
+}
+.ihm-swatch:hover { transform: scale(1.08); }
+.ihm-swatch.is-active {
+  box-shadow: 0 0 0 3px var(--ihm-yellow), 0 0 0 5px var(--ihm-ink);
+}
+
+/* ============================================================
+   SEGMENTED PILL (tipo selector de plataforma)
+============================================================ */
+.ihm-segmented {
+  display: inline-flex;
+  background: var(--ihm-cream);
+  border: var(--ihm-border-3);
+  border-radius: var(--ihm-r-full);
+  padding: 4px;
+  gap: 4px;
+}
+.ihm-segmented button {
+  background: transparent;
+  border: none;
+  font-family: var(--ihm-font-display);
+  font-size: var(--ihm-fs-sm);
+  font-weight: var(--ihm-fw-black);
+  letter-spacing: var(--ihm-tracking-wide);
+  color: var(--ihm-ink);
+  padding: 8px 18px;
+  border-radius: var(--ihm-r-full);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background var(--ihm-tx-fast), color var(--ihm-tx-fast);
+}
+.ihm-segmented button.is-active {
+  background: var(--ihm-red);
+  color: var(--ihm-white);
+}
+
+/* ============================================================
+   CREDENCIAL — wrapper container
+============================================================ */
+.ihm-credencial {
+  position: relative;
+  background: var(--ihm-cream);
+  border: var(--ihm-border-4);
+  border-radius: var(--ihm-r-xl);
+  overflow: hidden;
+  box-shadow: var(--ihm-shadow-lg);
+  aspect-ratio: 900 / 560;
+}
+.ihm-credencial-header {
+  background: var(--ihm-red);
+  color: var(--ihm-white);
+  padding: var(--ihm-sp-4);
+  border-bottom: var(--ihm-stroke-bold) solid var(--ihm-yellow);
+}
+.ihm-credencial-mrz {
+  background: var(--ihm-yellow);
+  border-top: var(--ihm-stroke-base) solid var(--ihm-red);
+  font-family: var(--ihm-font-mono);
+  font-weight: var(--ihm-fw-bold);
+  letter-spacing: 2px;
+  color: var(--ihm-ink);
+  padding: var(--ihm-sp-3) var(--ihm-sp-4);
+}
+
+/* ============================================================
+   AVATAR STAGE — para apilar los SVG del mango
+============================================================ */
+.ihm-avatar {
+  position: relative;
+  aspect-ratio: 400 / 500;
+  background: radial-gradient(circle at 50% 30%, var(--ihm-cream) 0%, var(--ihm-cream-line) 100%);
+  border: var(--ihm-border-3);
+  border-radius: var(--ihm-r-md);
+  overflow: hidden;
+}
+.ihm-avatar > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ============================================================
+   SELLO — diagonal overlay
+============================================================ */
+.ihm-sello {
+  position: absolute;
+  pointer-events: none;
+  transform: rotate(-12deg);
+  opacity: 0.85;
+  mix-blend-mode: multiply;
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+.ihm-stack { display: flex; flex-direction: column; }
+.ihm-row   { display: flex; align-items: center; }
+.ihm-gap-1 { gap: var(--ihm-sp-1); }
+.ihm-gap-2 { gap: var(--ihm-sp-2); }
+.ihm-gap-3 { gap: var(--ihm-sp-3); }
+.ihm-gap-4 { gap: var(--ihm-sp-4); }
+.ihm-gap-5 { gap: var(--ihm-sp-5); }
+
+.ihm-text-red    { color: var(--ihm-red); }
+.ihm-text-ink    { color: var(--ihm-ink); }
+.ihm-text-cream  { color: var(--ihm-cream); }
+.ihm-text-white  { color: var(--ihm-white); }
+.ihm-text-yellow { color: var(--ihm-yellow); }
+
+.ihm-uppercase { text-transform: uppercase; letter-spacing: var(--ihm-tracking-wide); }
+.ihm-rotate--2 { transform: rotate(-2deg); }
+.ihm-rotate--4 { transform: rotate(-4deg); }
+.ihm-rotate-2  { transform: rotate(2deg); }

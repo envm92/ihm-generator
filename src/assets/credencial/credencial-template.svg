@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560">
+  <defs>
+    
+    <pattern id="cred-bg" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#FFF6E0"></rect>
+      <path d="M 0 20 Q 10 10, 20 20 T 40 20" fill="none" stroke="#E8D9B5" stroke-width="1"></path>
+      <path d="M 0 30 Q 10 20, 20 30 T 40 30" fill="none" stroke="#E8D9B5" stroke-width="1"></path>
+    </pattern>
+  </defs>
+
+  
+  <rect x="0" y="0" width="900" height="560" rx="24" fill="url(#cred-bg)" stroke="#2a1a06" stroke-width="6"></rect>
+
+  
+  <path d="M 0 24 Q 0 0, 24 0 L 876 0 Q 900 0, 900 24 L 900 110 L 0 110 Z" fill="#D9342B"></path>
+  <line x1="0" y1="118" x2="900" y2="118" stroke="#FFD93D" stroke-width="6"></line>
+  <line x1="0" y1="128" x2="900" y2="128" stroke="#2a1a06" stroke-width="2"></line>
+
+  
+  <g transform="translate(60 55)">
+    <circle r="45" fill="#FFD93D" stroke="#2a1a06" stroke-width="4"></circle>
+    <text y="11" text-anchor="middle" font-family="Impact, &#39;Arial Black&#39;, sans-serif" font-weight="600" font-size="32" fill="#2a1a06" letter-spacing="1">RMCH</text>
+  </g>
+
+  
+  <text x="118" y="46" font-family="Impact, &#39;Arial Black&#39;, sans-serif" font-weight="500" font-size="30" fill="#fff" letter-spacing="2">INSTITUTO DE MANGOTITLÁN</text>
+  <text x="118" y="78" font-family="Impact, &#39;Arial Black&#39;, sans-serif" font-weight="300" font-size="22" fill="#FFD93D" letter-spacing="3">HABITANTE DE MANGOTITLÁN</text>
+
+  
+  <text x="120" y="98" font-family="&#39;Courier New&#39;, monospace" font-size="7" fill="#fff" opacity="0.7" letter-spacing="1">RADIOMANGUITOCHUPADO·RADIOMANGUITOCHUPADO·RADIOMANGUITOCHUPADO·RADIOMANGUITOCHUPADO·RADIOMANGUITOCHUPADO</text>
+
+  
+  <g>
+    <rect x="36" y="160" width="240" height="300" rx="12" fill="#F4ECD8" stroke="#2a1a06" stroke-width="3" stroke-dasharray="6 5"></rect>
+    <text x="156" y="316" text-anchor="middle" font-family="&#39;Courier New&#39;, monospace" font-size="14" fill="#A88C5C" letter-spacing="2">[ FOTO AVATAR ]</text>
+    <text x="156" y="336" text-anchor="middle" font-family="&#39;Courier New&#39;, monospace" font-size="11" fill="#A88C5C" letter-spacing="1">240 × 300</text>
+  </g>
+  
+  <text x="36" y="485" font-family="&#39;Courier New&#39;, monospace" font-size="10" fill="#2a1a06" opacity="0.6">FOLIO: {{FOLIO}}</text>
+
+  
+  <g font-family="Helvetica, Arial, sans-serif">
+    
+    <text x="310" y="178" font-size="12" font-weight="700" fill="#D9342B" letter-spacing="2">NOMBRE</text>
+    <text x="310" y="208" font-size="26" font-weight="800" fill="#2a1a06">{{NOMBRE}}</text>
+    <line x1="310" y1="220" x2="860" y2="220" stroke="#2a1a06" stroke-width="1.5" opacity="0.4"></line>
+
+    
+    <text x="310" y="248" font-size="12" font-weight="700" fill="#D9342B" letter-spacing="2">DOMICILIO</text>
+    <text x="310" y="276" font-size="18" font-weight="600" fill="#2a1a06">MANGOTITLÁN, M.X.</text>
+    <line x1="310" y1="288" x2="860" y2="288" stroke="#2a1a06" stroke-width="1.5" opacity="0.4"></line>
+
+    
+    <text x="310" y="316" font-size="12" font-weight="700" fill="#D9342B" letter-spacing="2">ESCUCHA EN</text>
+    <text x="350" y="346" font-size="20" font-weight="800" fill="#2a1a06">{{PLATAFORMA}}</text>
+    
+    <circle cx="322" cy="340" r="12" fill="#2a1a06"></circle>
+    <polygon points="318,333 318,347 332,340" fill="#fff"></polygon>
+    <line x1="310" y1="358" x2="860" y2="358" stroke="#2a1a06" stroke-width="1.5" opacity="0.4"></line>
+
+    
+    <text x="310" y="386" font-size="12" font-weight="700" fill="#D9342B" letter-spacing="2">CLAVE DE HABITANTE</text>
+    <text x="310" y="412" font-family="&#39;Courier New&#39;, monospace" font-size="18" font-weight="700" fill="#2a1a06" letter-spacing="2">{{CURP}}</text>
+
+    
+    <text x="310" y="440" font-size="11" font-weight="700" fill="#D9342B" letter-spacing="2">VIGENCIA</text>
+    <text x="310" y="460" font-size="15" font-weight="700" fill="#2a1a06">2026 — 2034</text>
+
+    
+    <text x="500" y="440" font-size="11" font-weight="700" fill="#D9342B" letter-spacing="2">SECCIÓN</text>
+    <text x="500" y="460" font-size="15" font-weight="700" fill="#2a1a06">{{SECCION}}</text>
+
+    
+    <text x="680" y="440" font-size="11" font-weight="700" fill="#D9342B" letter-spacing="2">FIRMA</text>
+    <path d="M 680 462 Q 705 445, 720 462 T 760 460 Q 780 450, 800 466" fill="none" stroke="#2a1a06" stroke-width="2"></path>
+  </g>
+
+  
+  <g transform="translate(820 200)" opacity="0.55">
+    <circle r="36" fill="#9BE7FF"></circle>
+    <circle r="36" fill="none" stroke="#2a1a06" stroke-width="1.5"></circle>
+    <text y="6" text-anchor="middle" font-family="Impact, sans-serif" font-size="14" font-weight="900" fill="#2a1a06">IHM</text>
+  </g>
+
+  
+  <g transform="translate(0 488)">
+    <rect width="900" height="72" fill="#FFD93D"></rect>
+    <rect width="900" height="4" fill="#D9342B"></rect>
+    <rect y="68" width="900" height="4" fill="#D9342B"></rect>
+    <text x="22" y="32" font-family="&#39;Courier New&#39;, monospace" font-size="17" font-weight="700" fill="#2a1a06" letter-spacing="2">IHM&lt;&lt;{{APELLIDO}}&lt;&lt;{{NOMBRE_CORTO}}&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
+    <text x="22" y="58" font-family="&#39;Courier New&#39;, monospace" font-size="17" font-weight="700" fill="#2a1a06" letter-spacing="2">{{FOLIO}}&lt;&lt;MX&lt;&lt;MGTL&lt;&lt;{{ANIO}}&lt;&lt;{{PLATAFORMA_CORTA}}&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
+  </g>
+</svg>

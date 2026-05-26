@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <g transform="rotate(-12 200 200)">
+    <circle cx="200" cy="200" r="170" fill="none" stroke="#D9342B" stroke-width="10"></circle>
+    <circle cx="200" cy="200" r="148" fill="none" stroke="#D9342B" stroke-width="5"></circle>
+    <circle cx="200" cy="200" r="80" fill="none" stroke="#D9342B" stroke-width="6"></circle>
+    
+    <defs>
+      <path id="selloTop" d="M 70 200 A 130 130 0 0 1 330 200" fill="none"></path>
+      <path id="selloBot" d="M 70 200 A 130 130 0 0 0 330 200" fill="none"></path>
+    </defs>
+    <text font-family="Impact, &#39;Arial Black&#39;, sans-serif" font-size="32" font-weight="900" fill="#D9342B" letter-spacing="5">
+      <textPath href="#selloTop" startOffset="50%" text-anchor="middle">MANGOTITLÁN MX</textPath>
+    </text>
+    <text font-family="Impact, &#39;Arial Black&#39;, sans-serif" font-size="24" font-weight="900" fill="#D9342B" letter-spacing="3">
+      <textPath href="#selloBot" startOffset="50%" text-anchor="middle">CERTIFICADO OFICIAL</textPath>
+    </text>
+    
+    <polygon points="200,140 215,180 258,180 224,205 236,247 200,222 164,247 176,205 142,180 185,180" fill="#D9342B"></polygon>
+    
+    <text x="200" y="290" text-anchor="middle" font-family="Impact, sans-serif" font-size="22" font-weight="900" fill="#D9342B" letter-spacing="3">OFICIAL</text>
+    
+    <g fill="#FFC629" opacity="0.6">
+      <rect x="110" y="180" width="14" height="6"></rect>
+      <rect x="270" y="220" width="20" height="4"></rect>
+      <rect x="180" y="80" width="8" height="10"></rect>
+      <rect x="220" y="310" width="14" height="5"></rect>
+      <circle cx="80" cy="240" r="6"></circle>
+      <circle cx="320" cy="160" r="4"></circle>
+    </g>
+  </g>
+</svg>
