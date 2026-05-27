@@ -266,3 +266,172 @@
     display: none;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   DOWNLOAD OVERLAY
+══════════════════════════════════════════════════════════ */
+.dl-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: dlOverlayIn 250ms ease-out forwards;
+  pointer-events: all;
+}
+
+/* Scanline texture */
+.dl-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.1) 3px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: dlScanlinesIn 350ms ease forwards;
+}
+
+@keyframes dlOverlayIn {
+  from { background: rgba(10, 5, 2, 0); }
+  to   { background: rgba(10, 5, 2, 0.92); }
+}
+
+@keyframes dlScanlinesIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.dl-scene {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* ── Card animated wrapper ────── */
+.dl-card-anim {
+  --dl-scale: 0.6;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 32px rgba(255, 195, 30, 0.55));
+  animation: dlCardEnter 950ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Celebration wiggle plays when download is done */
+.dl-card-anim.dl-card-done {
+  animation: dlCardCelebrate 550ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  filter: drop-shadow(0 0 52px rgba(255, 215, 0, 0.75));
+}
+
+@media (max-width: 768px) {
+  .dl-card-anim { --dl-scale: 0.36; }
+}
+@media (max-width: 480px) {
+  .dl-card-anim { --dl-scale: 0.30; }
+}
+
+/* Receives the autonomous 3D tilt transforms from the RAF loop */
+.dl-tilt-wrap {
+  border-radius: calc(28px * var(--dl-scale, 0.6));
+  will-change: transform, box-shadow;
+}
+
+/* Reserves layout space for the scaled card */
+.dl-card-size-reserve {
+  position: relative;
+  width: calc(900px * var(--dl-scale));
+  height: calc(560px * var(--dl-scale));
+  flex-shrink: 0;
+}
+
+/* The actual 900px card, scaled down via transform */
+.dl-card-scale-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 900px;
+  transform: scale(var(--dl-scale));
+  transform-origin: top left;
+}
+
+/* Spring entrance: tiny → overshoot → settle */
+@keyframes dlCardEnter {
+  0%   { transform: scale(0.08) rotate(-22deg); opacity: 0; }
+  18%  { transform: scale(1.18) rotate(5deg);   opacity: 1; }
+  32%  { transform: scale(0.90) rotate(-4deg); }
+  46%  { transform: scale(1.07) rotate(2deg); }
+  60%  { transform: scale(0.97) rotate(-1deg); }
+  75%  { transform: scale(1.02) rotate(0.5deg); }
+  100% { transform: scale(1.0)  rotate(0deg);   opacity: 1; }
+}
+
+/* Short celebration when download completes */
+@keyframes dlCardCelebrate {
+  0%   { transform: scale(1.0) rotate(0deg); }
+  25%  { transform: scale(1.10) rotate(-4deg); }
+  55%  { transform: scale(1.08) rotate(3.5deg); }
+  80%  { transform: scale(1.02) rotate(-1deg); }
+  100% { transform: scale(1.0) rotate(0deg); }
+}
+
+/* "PROCESANDO ·" ticker text */
+.dl-processing-text {
+  font-family: var(--ihm-font-body);
+  font-size: var(--ihm-fs-xs);
+  font-weight: var(--ihm-fw-bold);
+  letter-spacing: var(--ihm-tracking-wider);
+  text-transform: uppercase;
+  color: rgba(255, 195, 30, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90vw;
+  animation: dlTextIn 300ms ease forwards;
+}
+
+@keyframes dlTextIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Success state ─────────────────────────────────────── */
+.dl-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ihm-sp-4);
+  animation: dlSuccessIn 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes dlSuccessIn {
+  0%   { opacity: 0; transform: scale(0.6) translateY(20px); }
+  65%  { opacity: 1; transform: scale(1.05) translateY(-4px); }
+  100% { opacity: 1; transform: scale(1.0) translateY(0); }
+}
+
+.dl-success-title {
+  font-family: var(--ihm-font-display);
+  font-weight: var(--ihm-fw-black);
+  font-size: var(--ihm-fs-2xl);
+  color: var(--ihm-yellow);
+  -webkit-text-stroke: 3px var(--ihm-ink);
+  paint-order: stroke fill;
+  letter-spacing: var(--ihm-tracking-wide);
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 5px 5px 0 var(--ihm-ink);
+}
+
+.dl-btn-otra {
+  font-size: var(--ihm-fs-lg);
+  padding: 14px 36px;
+  box-shadow: var(--ihm-shadow-md);
+}

@@ -40,6 +40,21 @@ export async function downloadStory(storyRef, nombreArchivo = 'habitante-mangoti
   trigger(canvas, `${nombreArchivo}-story.png`);
 }
 
+// Captura la credencial oculta y devuelve el canvas sin descargar
+export async function captureCard(cardRef) {
+  return capture(cardRef.current, { scale: 2 });
+}
+
+// Captura el story oculto y devuelve el canvas sin descargar
+export async function captureStory(storyRef) {
+  return capture(storyRef.current, { scale: 1 });
+}
+
+// Dispara la descarga de un canvas ya capturado
+export function triggerDownload(canvas, filename) {
+  trigger(canvas, filename);
+}
+
 // Convierte el canvas a blob PNG y lo descarga creando un <a> temporal
 function trigger(canvas, filename) {
   canvas.toBlob(blob => {
