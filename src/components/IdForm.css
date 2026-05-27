@@ -16,6 +16,14 @@
   gap: var(--ihm-sp-3);
 }
 
+.form-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--ihm-sp-2);
+  border-bottom: var(--ihm-border-2);
+}
+
 .form-section-title {
   font-family: var(--ihm-font-display);
   font-weight: var(--ihm-fw-black);
@@ -23,8 +31,6 @@
   color: var(--ihm-ink);
   letter-spacing: var(--ihm-tracking-wide);
   text-transform: uppercase;
-  padding-bottom: var(--ihm-sp-2);
-  border-bottom: var(--ihm-border-2);
 }
 
 /* ── Form rows ──────────────────────────────────────────── */

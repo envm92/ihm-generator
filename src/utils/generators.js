@@ -68,3 +68,22 @@ export function generateAll(nombre, apellido) {
     jugoso: generateJugoso(),
   };
 }
+
+// Opciones válidas para cada parte del avatar (espejo de los exports de AvatarStage)
+const AVATAR_HEADS = ['classic', 'maduro', 'rosa', 'verde'];
+const AVATAR_EXPRESSIONS = ['asombro', 'cool', 'guino'];
+const AVATAR_SHIRTS = [
+  'frutas', 'hawaiana-flores', 'hawaiana-hojas',
+  'lisa-amarilla', 'lisa-blanca', 'lisa-negra',
+  'lisa-roja', 'lunares', 'rayas-marineras',
+];
+
+// Genera una configuración de avatar completamente aleatoria
+export function generateAvatar() {
+  return {
+    head: AVATAR_HEADS[rand(AVATAR_HEADS.length)],
+    expression: AVATAR_EXPRESSIONS[rand(AVATAR_EXPRESSIONS.length)],
+    shirt: AVATAR_SHIRTS[rand(AVATAR_SHIRTS.length)],
+    accessories: { audifonos: rand(2) === 1, lentes: rand(2) === 1 },
+  };
+}

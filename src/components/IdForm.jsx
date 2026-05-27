@@ -4,14 +4,17 @@ import {
   EXPRESSION_LABELS,
   SHIRT_LABELS,
 } from './AvatarStage';
-import { PLATAFORMA_OPTIONS } from '../utils/generators';
+import { PLATAFORMA_OPTIONS, generateAvatar } from '../utils/generators';
 import './IdForm.css';
 
-// Componente de sección con título para agrupar controles del formulario
-function Section({ title, children }) {
+// Componente de sección con título y acción opcional para agrupar controles del formulario
+function Section({ title, action, children }) {
   return (
     <div className="form-section">
-      <div className="form-section-title">{title}</div>
+      <div className="form-section-header">
+        <div className="form-section-title">{title}</div>
+        {action}
+      </div>
       {children}
     </div>
   );
@@ -72,7 +75,18 @@ export default function IdForm({ state, onChange, onGenerate }) {
         </div>
       </Section>
 
-      <Section title="Tu Mango">
+      <Section
+        title="Tu Mango"
+        action={
+          <button
+            type="button"
+            className="ihm-btn ihm-btn-sm ihm-btn-yellow"
+            onClick={() => onChange({ ...state, avatar: generateAvatar() })}
+          >
+            ↺ Random
+          </button>
+        }
+      >
         <div className="form-group">
           <label className="ihm-label">Tono de piel</label>
           <div className="swatch-grid swatch-grid--heads">

@@ -5,7 +5,7 @@ import useTilt from './hooks/useTilt';
 import IdCard from './components/IdCard';
 import IdForm from './components/IdForm';
 import StoryFrame from './components/StoryFrame';
-import { generateAll } from './utils/generators';
+import { generateAll, generateAvatar } from './utils/generators';
 import { captureCard, captureStory, triggerDownload } from './utils/export';
 import './App.css';
 
@@ -21,15 +21,7 @@ const SILUETA_MASK_URL = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(
 const CARD_W = 900;
 const CARD_H = 560;
 
-// Avatar predeterminado que se muestra al cargar la app por primera vez
-const DEFAULT_AVATAR = {
-  head: 'classic',
-  expression: 'asombro',
-  shirt: 'hawaiana-flores',
-  accessories: { audifonos: false, lentes: false },
-};
-
-// Genera el estado inicial con datos aleatorios para que la credencial no aparezca vacía
+// Genera el estado inicial con datos y avatar completamente aleatorios
 function buildInitialState() {
   const gen = generateAll('MANGO', 'HABITANTE', 'H');
   return {
@@ -37,7 +29,7 @@ function buildInitialState() {
     apellido: '',
     plataforma: 'SPOTIFY',
     fiel: false,
-    avatar: DEFAULT_AVATAR,
+    avatar: generateAvatar(),
     ...gen,
   };
 }
@@ -81,21 +73,23 @@ export default function App() {
     let frame;
     let t = 0;
     const tick = () => {
-      t += 0.008;
-      // Lissajous: frecuencias distintas para que el trazo no se repita de inmediato
-      const x = Math.sin(t * 1.7) * 0.38;
-      const y = Math.sin(t) * 0.28;
+      t += 0.014;
+      // Lissajous: frecuencias distintas para trayectoria orgánica no repetitiva
+      const x = Math.sin(t * 1.7) * 0.50;
+      const y = Math.sin(t) * 0.45;
+      // Flotación vertical independiente — frecuencia más lenta para efecto de levitación
+      const floatY = Math.sin(t * 0.9) * 14;
       const el = dlWrapRef.current;
       const glare = dlGlareRef.current;
       if (el) {
-        el.style.transform = `perspective(900px) rotateY(${(x * 8).toFixed(2)}deg) rotateX(${(-y * 8).toFixed(2)}deg) scale3d(1.03,1.03,1.03)`;
-        el.style.boxShadow = `${(x * 20).toFixed(1)}px ${(-y * 10 + 18).toFixed(1)}px 55px rgba(42,26,6,0.50)`;
+        el.style.transform = `perspective(680px) rotateY(${(x * 28).toFixed(2)}deg) rotateX(${(-y * 22).toFixed(2)}deg) translateY(${floatY.toFixed(1)}px) scale3d(1.06,1.06,1.06)`;
+        el.style.boxShadow = `${(x * 55).toFixed(1)}px ${(-y * 28 + 30).toFixed(1)}px 70px rgba(42,26,6,0.60)`;
       }
       if (glare) {
         const hue = Math.round((x + 0.5) * 360);
         const ang = Math.round(x * 180 + 90);
         glare.style.background = `linear-gradient(${ang}deg,hsl(${hue},100%,65%) 0%,hsl(${(hue+60)%360},100%,65%) 25%,hsl(${(hue+120)%360},100%,65%) 50%,hsl(${(hue+180)%360},100%,65%) 75%,hsl(${(hue+240)%360},100%,65%) 100%)`;
-        glare.style.opacity = '0.50';
+        glare.style.opacity = '0.70';
       }
       frame = requestAnimationFrame(tick);
     };
@@ -103,10 +97,10 @@ export default function App() {
     return () => cancelAnimationFrame(frame);
   }, [downloadAnim]);
 
-  // Regenera CURP, folio, sección y nivel de jugo con el nombre/apellido actuales
+  // Regenera campos aleatorios y avatar con el nombre/apellido actuales
   const handleGenerate = useCallback(() => {
     const gen = generateAll(state.nombre, state.apellido);
-    setState(s => ({ ...s, ...gen }));
+    setState(s => ({ ...s, ...gen, avatar: generateAvatar() }));
   }, [state.nombre, state.apellido]);
 
   // Reemplaza el estado completo con el objeto enviado desde IdForm
